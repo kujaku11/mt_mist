@@ -29,6 +29,8 @@ save_dir.mkdir(exist_ok=True)
 # loop over stations
 for station in ["st9031"]:
     station_path = survey_dir.joinpath(station)
+    if not station_path.exists():
+        raise IOError(f"Cannot find {station_path}")
     mth5_path = save_dir.joinpath(f"{station}_with_1s_run.h5")
     combine = True
 
